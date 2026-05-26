@@ -1,2 +1,7 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<h1>First attempt</h1>
+<p>Seeing where paragraphs land.</p>
+
+<ul>
+    <li><a href="/blog">Blog</a></li>
+    <li><a href="/About">About</a></li>
+</ul>
