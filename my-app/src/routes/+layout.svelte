@@ -1,15 +1,27 @@
 <script>
-	import favicon from '$lib/assets/favicon.svg';
-	import image from '$lib/assets/iss074e0603650~orig.jpg'
-
 	let { children } = $props();
+
 </script>
 
-<svelte:head>
-	<link rel="icon" href={favicon} />
-</svelte:head>
+<header class="title">
+	General Knowledge quiz
+</header>
 
-<img src={image} alt="ISS" />
+
 
 {@render children()}
 
+<nav>
+	<a href="/">Home</a>
+	<a href="/quiz">Quiz</a>
+</nav>
+
+<footer class="base">
+	This is the footer
+</footer>
+
+<style>
+	.title, .base {
+		color: red;
+	}
+</style>
