@@ -11,23 +11,10 @@
 
 {@render children()}
 
-<nav>
-	<a href="/">Home</a>
-	<a href="/quiz">Quiz</a>
-</nav>
-
-<footer class="base">
-	This is the footer
-</footer>
-
 <style>
-	
-	.title, .base {
-		color: red;
-	}
-
-	/*Set font for whole website. Can be overwritten by locally set parameters.*/
+	/*Set font and background colour for whole website. Can be overwritten by locally set parameters.*/
 	:global(body) {
 		font-family: Arial, Helvetica, sans-serif;
+		background: #9cd2f7;
 	}
 </style>

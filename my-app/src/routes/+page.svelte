@@ -1,15 +1,30 @@
 <script>
-    const genre = ['science', 'geograpgy', 'general knowledge', 'history' ];
+    const genre = ['Science ', 'Geograpgy ', 'General Knowledge ', 'History' ];
 </script>
 
 <div class="title">
     <h1>Trivia Quiz</h1>
     <p>Test your knowledge with one of these quizzes!</p>
 </div>
-{#each genre as genres}
-    <a href="/quiz/[genre]">Genre</a>
-{/each}
 
+<div class="buttonGrid">
+    {#each genre as g}
+    <a href="/quiz/{g}" class="btn">{g}</a>
+    {/each}
+</div>
+
+
+<!--
+Populates genre at the bottom of the page. Broken currently.
+{#each genre as g}
+    <a href="/quiz/{g}">{g}</a>
+{/each}
+-->
+<nav class="genre-grid">
+    {#each genre as g}
+        <a href="/difficulty/{g}" class="btn">{g}</a>
+    {/each}
+</nav>
 
 
 
@@ -19,9 +34,32 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: flex-start;
-        height: 100vh;
+        padding-top: 4rem;
         gap: 1rem;
+    }
+
+    .buttonGrid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        width: 500px;
+        margin: 2rem auto;
+    }
+
+    .btn {
+        padding: 1.5rem;
+        background: royalblue;
+        color: white;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 1.2rem;
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .btn:hover {
+        background: darkblue;
     }
 
     .title p {
