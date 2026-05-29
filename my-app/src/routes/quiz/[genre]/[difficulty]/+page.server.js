@@ -1,12 +1,5 @@
 
 
-const catergories = {
-    'Science': 17,
-    'Geography': 22,
-    'General Knowledge': 9,
-    'History': 23
-};
-
 export async function load({params}) {
     const catergoryID = categories[params.genre];
     const difficulty = catergoies.difficulty;

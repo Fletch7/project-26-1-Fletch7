@@ -1,5 +1,5 @@
 <script>
-    const genre = ['Science ', 'Geograpgy ', 'General Knowledge ', 'History' ];
+    const genre = ['Science', 'Geograpgy', 'General Knowledge', 'History' ];
 </script>
 
 <div class="title">
@@ -7,11 +7,12 @@
     <p>Test your knowledge with one of these quizzes!</p>
 </div>
 
-<div class="buttonGrid">
+<!--Populates grid with 4 genre buttons.-->
+<nav class="buttonGrid">
     {#each genre as g}
-    <a href="/quiz/{g}" class="btn">{g}</a>
+    <a href="/difficulty/{g}" class="btn">{g}</a>
     {/each}
-</div>
+</nav>
 
 
 <!--
@@ -20,11 +21,7 @@ Populates genre at the bottom of the page. Broken currently.
     <a href="/quiz/{g}">{g}</a>
 {/each}
 -->
-<nav class="genre-grid">
-    {#each genre as g}
-        <a href="/difficulty/{g}" class="btn">{g}</a>
-    {/each}
-</nav>
+
 
 
 
