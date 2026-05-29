@@ -1,5 +1,5 @@
 <script>
-    const genre = ['Science', 'Geograpgy', 'General Knowledge', 'History' ];
+    const genre = ['Science', 'Geography', 'General Knowledge', 'History' ];
 </script>
 
 <div class="title">

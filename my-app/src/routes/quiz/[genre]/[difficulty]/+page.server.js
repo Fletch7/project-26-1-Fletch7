@@ -1,8 +1,13 @@
-
+const categories = {
+    'Science': 17,
+    'Geography': 22,
+    'General Knowledge': 9,
+    'History': 23
+};
 
 export async function load({params}) {
-    const catergoryID = categories[params.genre];
-    const difficulty = catergoies.difficulty;
+    const categoryId = categories[params.genre];
+    const difficulty = params.difficulty;
 
     const res = await fetch(
         `https://opentdb.com/api.php?amount=10&category=${categoryId}&difficulty=${difficulty}&type=multiple`

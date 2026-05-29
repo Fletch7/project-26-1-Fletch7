@@ -16,13 +16,50 @@
     
 </script>
 
-<div class="quiz">
-    <div class="progess">Question {current + 1} of {data.questions.length}</div>
-    <div cleas="question">{decode(q.question)}</div>
+<div class="question" >
+    <h1>{decode(q.question)}</h1>
 </div>
 
+<nav class="buttonGrid">
+    {#each answers as answer}
+        <button
+            onclick={() => pickAnswer(answer)}
+            disabled={selected !== null}
+            class:correct={selected && answer === q.correct_answer}
+            class:wrong={selected && answer !== q.correct_answer && answer === selected}
+        >
+        {decode(answer)}
+        </button>
+    {/each}
+</nav>
+
 <style>
-    .progress {
+    .buttonGrid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        width: 500px;
+        margin: 2rem auto;
+    }
+
+    .buttonGrid button {
+        text-transform: capitalize;
+        padding: 1.5rem;
+        background: royalblue;
+        color: white;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 1.2rem;
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .question {
         display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 4rem;
+        gap: 1rem;        
     }
 </style>
