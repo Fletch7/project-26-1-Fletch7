@@ -2,27 +2,33 @@
     const genre = ['science', 'geograpgy', 'general knowledge', 'history' ];
 </script>
 
-<h1>First attempt</h1>
-<p>Seeing where paragraphs land.</p>
-
-{#each genres as genre}
+<div class="title">
+    <h1>Trivia Quiz</h1>
+    <p>Test your knowledge with one of these quizzes!</p>
+</div>
+{#each genre as genres}
     <a href="/quiz/[genre]">Genre</a>
 {/each}
-<GenreCard label="Science" href="/quiz/science" />
 
 
-<div class="quizlayout">
-    <p>This is where the layout is going to go.</p>
-</div>
+
 
 
 <style>
-    .quizlayout p {
-        border-style: solid;
-        width: 75vw;
-        height: 75vh;
+    .title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        height: 100vh;
+        gap: 1rem;
     }
-    .quizlayout border {
-        border-radius: 10;
+
+    .title p {
+        font-size: 1.5rem;
+    }
+
+    .landingpage p {
+        border-style: solid;
     }
 </style>

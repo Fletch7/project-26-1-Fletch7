@@ -21,7 +21,13 @@
 </footer>
 
 <style>
+	
 	.title, .base {
 		color: red;
+	}
+
+	/*Set font for whole website. Can be overwritten by locally set parameters.*/
+	:global(body) {
+		font-family: Arial, Helvetica, sans-serif;
 	}
 </style>
