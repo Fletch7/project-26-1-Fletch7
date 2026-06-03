@@ -10,6 +10,19 @@
 
 <nav class="buttonGrid">
     {#each difficulties as d}
-    <a href="/quiz/{data.genre}/{d.toLowerCase()}" class="btn">{d}</a>
+    <a href="/quiz/{encodeURIComponent(data.genre)}/{d.toLowerCase()}" class="btn">{d}</a>
     {/each}
 </nav>
+
+
+<style>
+
+
+        .buttonGrid {
+        display: grid;
+        grid-template-columns: (1, 3fr);
+        gap: 4rem;
+        width: 500px;
+        margin: 2rem auto;
+    }
+</style>

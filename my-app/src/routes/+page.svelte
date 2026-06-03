@@ -2,15 +2,17 @@
     const genre = ['Science', 'Geography', 'General Knowledge', 'History' ];
 </script>
 
-<div class="title">
-    <h1>Trivia Quiz</h1>
-    <p>Test your knowledge with one of these quizzes!</p>
+<div class='titleLayout'>
+    <div class="title">
+        <h1>Trivia Quiz</h1>
+        <p>Test your knowledge with one of these quizzes!</p>
+    </div>
 </div>
 
 <!--Populates grid with 4 genre buttons.-->
 <nav class="buttonGrid">
     {#each genre as g}
-    <a href="/difficulty/{g}" class="btn">{g}</a>
+    <a href="/difficulty/{encodeURIComponent(g)}" class="btn">{g}</a>
     {/each}
 </nav>
 
@@ -23,16 +25,31 @@ Populates genre at the bottom of the page. Broken currently.
 -->
 
 
+<!--
+Colour scheme - background -> #1E252B
+                text/headers -> #EAECEE
+                buttons/results -> #F4B41A
 
+
+-->
 
 
 <style>
+    .titleLayout {
+        margin: auto;
+        align-items: center;
+        background: #9599be;
+        width: 50vw;
+        align-self: center;
+    }
+
     .title {
         display: flex;
         flex-direction: column;
         align-items: center;
         padding-top: 4rem;
         gap: 1rem;
+        border-radius: 20; 
     }
 
     .buttonGrid {
@@ -43,10 +60,12 @@ Populates genre at the bottom of the page. Broken currently.
         margin: 2rem auto;
     }
 
-    .btn {
+    /*Sets style for all 'btn' classes site wide.
+    'btn' used for genre/difficulty selection and answer selection.*/
+    :global(.btn) {
         padding: 1.5rem;
-        background: royalblue;
-        color: white;
+        background: #84ffc9;
+        color: rgb(24, 24, 24);
         border-radius: 8px;
         text-decoration: none;
         font-size: 1.2rem;
