@@ -51,6 +51,7 @@
             disabled={selected !== null}
             class:correct={selected && answer === q.correct_answer}
             class:wrong={selected && answer !== q.correct_answer && answer === selected}
+            class:clicked={isClicked}
         >
         {decode(answer)}
         </button>       
@@ -59,7 +60,7 @@
 
 {#if selected}
     {#if selected === q.correct_answer}
-        <p>That's the correct answer!</p>
+        <p>That's the correct answer!</p>      
     {:else}
         <p>That answer is incorrect.</p>
     {/if}
@@ -67,6 +68,10 @@
 {/if}
 
 <style>
+    .clicked {
+        color: green;
+    }
+
     .buttonGrid {
         display: grid;
         grid-template-columns: 1fr 1fr;
