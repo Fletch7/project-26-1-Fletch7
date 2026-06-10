@@ -75,7 +75,7 @@ Colour scheme - background -> #1E252B
     }
 
     .btn:hover {
-        background: darkblue;
+        background: rgb(66, 189, 178);
     }
 
     .title p {

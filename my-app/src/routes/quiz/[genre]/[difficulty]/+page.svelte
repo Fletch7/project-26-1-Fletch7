@@ -9,16 +9,20 @@
     let wrongAnswers = $state(0);
     let q = $derived(data.questions[current]);
 
-    let answers = $derived([...q.incorrect_answers, q.correct_answer].sort());
+    //'finished' swaps to true once the next current question number is larger than the list of questions (10).
+    let finished = $state(false);
+
+    let answers = $derived([...q.incorrect_answers, q.correct_answer].toSorted());
 
     /*When user selects an answer, assigns (answer) the picked value. Compares picked value against values pulled from API.
-      This function also updates how many questions the user gets wrong or right.*/
-    //Tracking wrong answers not necessary. Amount of wrong answers obvious. To display amount of correct answers against total amount 
-    //of questions asked during quiz.
+      This function also updates how many questions the user gets wrong or right.
+      Tracking wrong answers not necessary. Amount of wrong answers obvious. To display amount of correct answers against total amount 
+      of questions asked during quiz.*/
+
     function pickAnswer(answer) {
         selected = answer;
-        if (answer === q.correct.answer) {
-            correctAnswers +=1;
+        if (answer === q.correct_answer) {
+            correctAnswers += 1;
         }
         else {
             wrongAnswers += 1;
@@ -26,9 +30,18 @@
     }
 
     function nextQuestion() {
+        if (current +1 >= data.questions.length) {
+            finished = true;
+        }
+
+        else {
         current += 1;
         selected = null;
+        }
     }
+
+
+
 
 </script>
 
@@ -42,7 +55,7 @@
     <h1>{decode(q.question)}</h1>
 </div>
 
-<!--Generates 4 potential answer buttons. 'correct_answer' is the key name for the correct answer pulled from the API.Page
+<!--Generates 4 potential answer buttons. 'correct_answer' is the api key name for the correct answer pulled from the API.Page
 -->
 <nav class="buttonGrid">
     {#each answers as answer}
@@ -51,40 +64,46 @@
             disabled={selected !== null}
             class:correct={selected && answer === q.correct_answer}
             class:wrong={selected && answer !== q.correct_answer && answer === selected}
-            class:clicked={isClicked}
         >
         {decode(answer)}
         </button>       
     {/each}
 </nav>
 
-{#if selected}
-    {#if selected === q.correct_answer}
-        <p>That's the correct answer!</p>      
+
+<!--Main loop. Runs until the current questions variable is equal to the amount of questions(data.questions.length). 
+    'finished' then flips to true, and the first chunk of this if statement runs.-->
+{#if finished}
+    <h1>Quiz complete!</h1>
+    <p>You got {correctAnswers}/{data.questions.length} questions correct.</p>
+    <a href="/" class="newGameBtn">New Game</a>
     {:else}
-        <p>That answer is incorrect.</p>
-    {/if}
-    <button onclick="{nextQuestion}">Next question</button>
+        {#if selected}
+            {#if selected === q.correct_answer}
+                <p class="correctAnswer">That answer is correct!</p>   
+            {:else}
+                <p class="incorrectAnswer">That answer is incorrect.</p>
+                <p>The correct answer is {q.correct_answer}</p>
+            {/if}
+            <button class ="nextQuestion" onclick="{nextQuestion}">Next question</button>
+        {/if}
 {/if}
 
 <style>
-    .clicked {
-        color: green;
-    }
-
     .buttonGrid {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 4rem;
         width: 500px;
         margin: 2rem auto;
+        border-radius: 8px;
     }
 
     .buttonGrid button {
         text-transform: capitalize;
         padding: 1.5rem;
-        background: #F4B41A;
-        color: white;
+        background: #84ffc9;
+        color: black;
         border-radius: 8px;
         text-decoration: none;
         font-size: 1.2rem;
@@ -93,6 +112,15 @@
         box-sizing: border-box;
     }
 
+    .buttonGrid button.correct {
+        background: green;
+    }
+
+    .buttonGrid button.wrong {
+        background: red;
+    }
+    
+
     .question {
         display: flex;
         flex-direction: column;
@@ -100,5 +128,41 @@
         padding-top: 4rem;
         gap: 1rem;        
         align-items: center;
+    }
+
+    .correctAnswer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 4rem;
+        gap: 1rem;
+        border-radius: 20; 
+        font-size: 1.5rem;
+        background: green;
+        align-content: center;
+    }
+
+        .incorrectAnswer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 4rem;
+        gap: 1rem;
+        border-radius: 20; 
+        font-size: 1.5rem;
+        align-content: center;
+        border-radius: 8px;
+    }
+
+    .nextQuestion {
+        padding: 1.5rem;
+        background: #84ffc9;
+        color: rgb(24, 24, 24);
+        border-radius: 20px;
+        text-decoration: none;
+        font-size: 1.2rem;
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
     }
 </style>

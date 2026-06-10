@@ -1,5 +1,6 @@
    
    //Replaces all HTML entities with their correct symbol. Can be called anywhere in route hierarchy.
+   //There are a few random German characters in some of the questions I haven't accounted for.
    export function decode(str) {
         return str
             .replace(/&amp;/g, '&')
