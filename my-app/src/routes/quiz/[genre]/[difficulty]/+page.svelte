@@ -47,7 +47,7 @@
 
 <!--Counter displays number of question out of total number of questions.-->
 <p class="questionCounter">Question {current + 1}/{data.questions.length}</p>
-<p class ="correctlyAnswered">Correct answers: {correctAnswers}<p>
+<p class ="correctlyAnswered">Correct answers: {correctAnswers}</p>
 <p class ="incorrectlyAnswered">Wrong answers: {wrongAnswers}</p>
 
 <!-- Displays current question via decode function to filter any unrecognised html entities.-->
@@ -55,8 +55,7 @@
     <h1>{decode(q.question)}</h1>
 </div>
 
-<!--Generates 4 potential answer buttons. 'correct_answer' is the api key name for the correct answer pulled from the API.Page
--->
+<!--Generates 4 potential answer buttons. 'correct_answer' is the api key name for the correct answer pulled from the API.Page-->
 <nav class="buttonGrid">
     {#each answers as answer}
         <button
