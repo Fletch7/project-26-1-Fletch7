@@ -16,11 +16,26 @@
 
 
 <style>
-        .buttonGrid {
-        display: grid;
-        grid-template-columns: 1fr 3fr;
-        gap: 4rem;
-        width: 500px;
-        margin: 2rem auto;
+        .buttonGrid a {
+            border: 1px solid black;
+            display: flex;
+            justify-content: center;
+            width: 500px;
+            margin: 2rem auto;
+            text-align: center;
     }
+
+        .title {
+            display: flex;
+            margin: auto;
+            flex-direction: column;
+            align-items: center;
+            background: #d3d3d3;
+            width: 50vw;
+            align-self: center;
+            border-radius: 20px;
+            font-size: 1.5rem;
+            padding-top: 2rem;
+    }
+
 </style>

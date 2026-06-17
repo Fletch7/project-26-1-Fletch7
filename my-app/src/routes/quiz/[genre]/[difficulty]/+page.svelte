@@ -1,8 +1,7 @@
 <script>
-
     import { decode } from '$lib/utils.js';
     let { data } = $props();
-    //Question number. Increases by 1 each time the player answers a question. Changing this automatically changes value for 'q'.
+    //Current is the current question number. Increases by 1 each time the player answers a question. Changing this automatically changes value for 'q'.
     let current = $state(0);
     let selected = $state(null);
     let correctAnswers = $state(0);
@@ -39,16 +38,14 @@
         selected = null;
         }
     }
-
-
-
-
 </script>
 
 <!--Counter displays number of question out of total number of questions.-->
-<p class="questionCounter">Question {current + 1}/{data.questions.length}</p>
-<p class ="correctlyAnswered">Correct answers: {correctAnswers}</p>
-<p class ="incorrectlyAnswered">Wrong answers: {wrongAnswers}</p>
+<quizstats id="quizStats">
+    <p class="questionCounter">Question {current + 1}/{data.questions.length}</p>
+    <p class ="correctlyAnswered">Correct answers: {correctAnswers}</p>
+    <p class ="incorrectlyAnswered">Incorrect answers: {wrongAnswers}</p>
+</quizstats>
 
 <!-- Displays current question via decode function to filter any unrecognised html entities.-->
 <div class="question" >
@@ -69,28 +66,55 @@
     {/each}
 </nav>
 
+<!-- Main loop. Runs until the current questions variable is equal to the amount of questions(data.questions.length). 
+    'finished' then flips to true, and the first chunk of this if statement runs. -->
 
-<!--Main loop. Runs until the current questions variable is equal to the amount of questions(data.questions.length). 
-    'finished' then flips to true, and the first chunk of this if statement runs.-->
 {#if finished}
-    <h1>Quiz complete!</h1>
-    <p>You got {correctAnswers}/{data.questions.length} questions correct.</p>
-    <a href="/" class="newGameBtn">New Game</a>
+    <section class="quizResults">
+        <h1>Quiz complete!</h1>
+        <p>You got {correctAnswers}/{data.questions.length} questions correct.</p>
+            {#if correctAnswers === data.questions.length}                                           <!-- If amount of correct answers equals total questions, player scored perfectly -->
+                <p>Perfect score!</p>                                                 
+            {:else if correctAnswers >= data.questions.length / 2}
+                <p>More than half right. Not bad!</p>                                                <!-- If player answers between 5 and 9 questions correctly-->
+            {:else}
+                <p>Could use some practice!</p>                                                      <!-- If player answers fewer than 5 questions correctly -->
+            {/if}
+        <a href="/" class="newGameBtn">New Game</a>
+    </section>
 {:else}
     {#if selected}
         <section class="answerResult">
             {#if selected === q.correct_answer}
-                <p class="correctAnswer">That answer is correct!</p>   
+                <p class="correctAnswer">Correct!!</p>   
             {:else}
                 <p class="incorrectAnswer">That answer is incorrect.</p>
-                <p>The correct answer is {q.correct_answer}</p>
+                <p class="thisWasTheRightAnswer">The correct answer is {q.correct_answer}</p>        <!-- Displays the correct answer on screen when the player selects an incorrect answer -->     
             {/if}
-            <button class ="nextQuestion" onclick="{nextQuestion}">Next question</button>
+            <button class ="nextQuestion" onclick="{nextQuestion}">Next question</button>            <!-- Button to navigate to next question -->
         </section>
     {/if}
 {/if}
 
 <style>
+    #quizStats {
+        display: flex;
+        justify-content: space-between;
+        max-width: 500px;
+        margin: 2rem auto;
+        font-size: 1.2rem;
+    }
+
+    .quizResults, .answerResult {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        max-width: 500px;
+        margin: 2rem auto;
+        font-size: 1.5rem;
+    }
+
     .buttonGrid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -100,7 +124,8 @@
         border-radius: 8px;
     }
 
-    .buttonGrid button {
+    .buttonGrid button,
+    .newGameBtn {
         text-transform: capitalize;
         padding: 1.5rem;
         background: #84ffc9;
@@ -110,7 +135,10 @@
         font-size: 1.2rem;
         text-align: center;
         width: 100%;
-        box-sizing: border-box;
+    }
+
+    .thisWasTheRightAnswer {
+        font-size: 1.5rem;
     }
 
     .buttonGrid button.correct {
@@ -121,7 +149,6 @@
         background: red;
     }
     
-
     .question {
         display: flex;
         flex-direction: column;
@@ -132,32 +159,28 @@
     }
 
     .correctAnswer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding-top: 4rem;
-        gap: 1rem;
-        border-radius: 20; 
+        text-align: center;
+        padding: 2rem;
+        border-radius: 20px;
         font-size: 1.5rem;
-        background: green;
-        align-content: center;
+        background: 84ffc9;
+        border: 1px solid black;
+        margin-bottom: 1rem;
     }
 
-        .incorrectAnswer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding-top: 4rem;
-        gap: 1rem;
-        border-radius: 20; 
+    .incorrectAnswer {
+        text-align: top;
+        padding: 2rem;
+        border-radius: 20px;
         font-size: 1.5rem;
-        align-content: center;
-        border-radius: 8px;
+        background: #EAECEE;
+        border: 1px solid black;
+        margin-bottom: 1rem;
     }
 
     .nextQuestion {
         padding: 1.5rem;
-        background: #84ffc9;
+        background: #EAECEE;
         color: rgb(24, 24, 24);
         border-radius: 20px;
         text-decoration: none;
@@ -165,5 +188,9 @@
         text-align: center;
         width: 100%;
         box-sizing: border-box;
+    }
+
+    .nextQuestion:hover {
+        background: rgb(173, 173, 173);
     }
 </style>
