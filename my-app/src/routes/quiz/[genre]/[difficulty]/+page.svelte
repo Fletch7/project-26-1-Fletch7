@@ -55,7 +55,7 @@
 <!--Generates 4 potential answer buttons. 'correct_answer' is the api key name for the correct answer pulled from the API.Page-->
 <nav class="buttonGrid">
     {#each answers as answer}
-        <button
+        <button class="answerButton"
             onclick={() => pickAnswer(answer)}
             disabled={selected !== null}
             class:correct={selected && answer === q.correct_answer}
@@ -192,5 +192,10 @@
 
     .nextQuestion:hover {
         background: rgb(173, 173, 173);
+    }
+
+    .answerButton:hover {
+        background: rgb(66, 189, 178);
+        cursor: pointer;
     }
 </style>
