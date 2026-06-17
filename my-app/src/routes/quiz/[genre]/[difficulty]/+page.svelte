@@ -100,9 +100,10 @@
     #quizStats {
         display: flex;
         justify-content: space-between;
-        max-width: 500px;
+        max-width: 600px;
         margin: 2rem auto;
-        font-size: 1.2rem;
+        font-size: 1.3rem;
+        gap: 2rem;
     }
 
     .quizResults, .answerResult {
@@ -135,6 +136,11 @@
         font-size: 1.2rem;
         text-align: center;
         width: 100%;
+        border: 1px solid black;
+    }
+
+    .newGameBtn:hover {
+        background: rgb(66, 189, 178);
     }
 
     .thisWasTheRightAnswer {
