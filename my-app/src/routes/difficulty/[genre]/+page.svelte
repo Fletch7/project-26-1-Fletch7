@@ -56,14 +56,13 @@
         margin: auto;
         flex-direction: column;
         align-items: center;
-        background: #d3d3d3;
+        background: #9ad8d8;
         width: 50vw;
         align-self: center;
         border-radius: 20px;
         font-size: 1.5rem;
         padding-top: 2rem;
-
-
+        border: 1px solid black;
     }
 
 </style>

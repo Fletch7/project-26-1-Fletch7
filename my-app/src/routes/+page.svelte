@@ -40,10 +40,11 @@ Colour scheme - background -> #1E252B
     #titleLayout {
         margin: auto;
         align-items: center;
-        background: #d3d3d3;
-        width: 50vw;
+        background: #9ad8d8;
+        width: 40vw;
         align-self: center;
         border-radius: 20px;
+        border: 1px solid black;
     }
 
     #title {
