@@ -142,11 +142,11 @@
     }
 
     .buttonGrid button.correct {
-        background: green;
+        background: rgb(77, 228, 77);
     }
 
     .buttonGrid button.wrong {
-        background: red;
+        background: rgb(255, 119, 119);
     }
     
     .question {
