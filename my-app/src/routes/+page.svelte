@@ -2,14 +2,14 @@
     const genre = ['Science', 'Geography', 'General Knowledge', 'History' ];
 </script>
 
-<div class='titleLayout'>
-    <div class="title">
+<header id='titleLayout'>
+    <hgroup id="title">
         <h1>Trivia Quiz</h1>
         <p>Test your knowledge with one of these quizzes!</p>
-    </div>
-</div>
+    </hgroup>
+</header>
 
-<!--Populates grid with 4 genre buttons.-->
+<!--Populates grid with 4 genre buttons.'encodeURIComponent' used because this parameter used in API URL call. This accounts for the space in 'General Knowledge'. API call breaks if space not encoded-->
 <nav class="buttonGrid">
     {#each genre as g}
     <a href="/difficulty/{encodeURIComponent(g)}" class="btn">{g}</a>
@@ -29,13 +29,11 @@ Populates genre at the bottom of the page. Broken currently.
 Colour scheme - background -> #1E252B
                 text/headers -> #EAECEE
                 buttons/results -> #F4B41A
-
-
 -->
 
 
 <style>
-    .titleLayout {
+    #titleLayout {
         margin: auto;
         align-items: center;
         background: #9599be;
@@ -43,7 +41,7 @@ Colour scheme - background -> #1E252B
         align-self: center;
     }
 
-    .title {
+    #title {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -61,7 +59,7 @@ Colour scheme - background -> #1E252B
     }
 
     /*Sets style for all 'btn' classes site wide.
-    'btn' used for genre/difficulty selection and answer selection.*/
+    'btn' used for genre/difficulty selection and answer selection. 'btn' can be overwritten locally if necessary.*/
     :global(.btn) {
         padding: 1.5rem;
         background: #84ffc9;

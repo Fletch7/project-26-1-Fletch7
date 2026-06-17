@@ -3,10 +3,10 @@
     const difficulties = ['Easy', 'Medium', 'Hard'];
 </script>
 
-<div class="title">
+<header class="title">
     <h1>{data.genre}</h1>
     <p>Pick a difficulty</p>
-</div>
+</header>
 
 <nav class="buttonGrid">
     {#each difficulties as d}
@@ -16,11 +16,9 @@
 
 
 <style>
-
-
         .buttonGrid {
         display: grid;
-        grid-template-columns: (1, 3fr);
+        grid-template-columns: 1fr 3fr;
         gap: 4rem;
         width: 500px;
         margin: 2rem auto;

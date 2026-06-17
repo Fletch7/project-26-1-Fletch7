@@ -76,8 +76,9 @@
     <h1>Quiz complete!</h1>
     <p>You got {correctAnswers}/{data.questions.length} questions correct.</p>
     <a href="/" class="newGameBtn">New Game</a>
-    {:else}
-        {#if selected}
+{:else}
+    {#if selected}
+        <section class="answerResult">
             {#if selected === q.correct_answer}
                 <p class="correctAnswer">That answer is correct!</p>   
             {:else}
@@ -85,7 +86,8 @@
                 <p>The correct answer is {q.correct_answer}</p>
             {/if}
             <button class ="nextQuestion" onclick="{nextQuestion}">Next question</button>
-        {/if}
+        </section>
+    {/if}
 {/if}
 
 <style>
