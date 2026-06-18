@@ -57,7 +57,7 @@
         flex-direction: column;
         align-items: center;
         background: #9ad8d8;
-        width: 50vw;
+        width: 40vw;
         align-self: center;
         border-radius: 20px;
         font-size: 1.5rem;

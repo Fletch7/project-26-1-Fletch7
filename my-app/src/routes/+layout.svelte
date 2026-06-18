@@ -14,10 +14,6 @@
 		font-family: Arial, Helvetica, sans-serif;
 		background: #b0e0e6;
 	}
-	
-	:global(text) {
-		font-family:Arial, Helvetica, sans-serif;
-	}
 
 	/*Global rules for all buttons. Can be overwritten locally.*/
 	:global(.btn) {

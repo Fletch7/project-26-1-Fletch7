@@ -97,7 +97,24 @@
     {/if}
 {/if}
 
+<footer>
+    <nav class="home">
+        <a href="/" class="btn">Home</a>
+    </nav>
+</footer>
 <style>
+
+    .home {
+        position: fixed;
+        bottom: 10vh;
+        left: 50vw;
+        width: 100%;
+    }
+
+    .home .btn {
+        border: 1px solid black;
+    }
+
     #quizStats {
         display: flex;
         justify-content: space-between;
@@ -105,6 +122,10 @@
         margin: 2rem auto;
         font-size: 1.3rem;
         gap: 2rem;
+    }
+
+    .answerResult .thisWasTheRightAnswer {
+        font-size: 2rem;
     }
 
     .quizResults, .answerResult {
@@ -170,7 +191,7 @@
         padding: 2rem;
         border-radius: 20px;
         font-size: 1.5rem;
-        background: 84ffc9;
+        background: #EAECEE;
         border: 1px solid black;
         margin-bottom: 1rem;
     }
