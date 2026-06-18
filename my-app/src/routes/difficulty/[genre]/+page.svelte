@@ -31,7 +31,7 @@
 <nav class="buttonGrid">
     {#each difficulties as d}
         <button class="btn" disabled={remaining > 0} onclick={() => pick(d)}>
-            {d}{remaining > 0 ? ` (${Math.ceil(remaining / 1000)}s)` : ''}
+            {d}{remaining > 0 ? ` (${Math.ceil(remaining / 1000)}s)` : ''}              <!-- Displays difficulty value 'd' and the time remaining in seconds before the buttons become clickable again.-->
         </button>
     {/each}
 </nav>

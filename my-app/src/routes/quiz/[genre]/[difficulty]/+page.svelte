@@ -105,10 +105,10 @@
 <style>
 
     .home {
-        position: fixed;
-        bottom: 10vh;
-        left: 50vw;
-        width: 100%;
+        display: grid;
+        width: 50px;
+        margin: 2rem auto;
+        padding-right: 85px;
     }
 
     .home .btn {
@@ -128,7 +128,8 @@
         font-size: 2rem;
     }
 
-    .quizResults, .answerResult {
+    .quizResults, 
+    .answerResult {
         display: flex;
         flex-direction: column;
         align-items: center;
